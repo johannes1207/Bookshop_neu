@@ -1,0 +1,40 @@
+sap.ui.define([
+	"sap/ui/core/mvc/Controller",
+	"sap/m/MessageToast",
+	"sap/ui/core/UIComponent",
+	"sap/ui/model/json/JSONModel"
+], function (Controller, MessageToast, UIComponent, JSONModel) {
+	"use strict";
+
+	return Controller.extend("com.sap.bookstoreTA.com.sap.bookstoreTA.controller.app", {
+		onInit: function () {
+
+			var oRouter = UIComponent.getRouterFor(this);
+			oRouter.getRoute("Routeapp").attachMatched(
+									this._onRouteMatched, this
+			);
+
+		},
+		_onRouteMatched : function(oEvent){
+			this._loadModel();
+		},
+		_loadModel : function(){
+           
+                var oBookModel = new JSONModel();
+                oBookModel.loadData("/api/v1/book");
+                this.getView().setModel(oBookModel);
+            
+        },
+
+		onItemPress : function(oEvent)
+		{
+			var oSource = oEvent.getSource(),
+			oListItemData = oSource.getBindingContext().getObject();
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("detail",{
+				"isbn":oListItemData.Isbn
+			});
+			//MessageToast.show("Book: " + oListItemData.Isbn + "Has been pressed")
+		}
+	});
+});

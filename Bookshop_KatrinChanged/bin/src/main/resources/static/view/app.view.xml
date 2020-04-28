@@ -1,0 +1,81 @@
+<mvc:View controllerName="com.sap.bookstoreTA.com.sap.bookstoreTA.controller.app"
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true"
+	xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>Bookstore}">
+					<content>
+					
+					
+	 <!--    <List id="bookList"
+		items="{/}"
+		headerText="Books">
+		<ObjectListItem
+			title="{Title}"
+			type="Navigation"
+			press="onListItemPress"
+			number="{Price}"
+			numberUnit="EUR">
+			<firstStatus>
+				<ObjectStatus
+					text="{NumberOfItems}, available"
+					state="
+						Success
+					" />
+			</firstStatus>
+			<ObjectAttribute title = "ISBN" text="{Isbn}" />
+			<ObjectAttribute title = "Publishing Year" text="{PublishingYear}" />
+			<ObjectAttribute title = "Editor" text="{Editor}" />
+		</ObjectListItem>
+	</List>-->
+					
+					
+					<!-- <List    id="bookList"
+        headerText="Books"
+        items="{/}"
+       
+        >
+        <items><StandardListItem title="{Title}"/></items>
+       
+       
+   
+    </List> -->
+						
+						
+	 <List
+		id="ShortProductList"
+		headerText="Books"
+		items="{/}">
+		<items>
+			
+				 
+				 <ObjectListItem
+			title="{Title}"
+			icon="sap-icon://course-book"
+			type="Active"
+			press="onItemPress"
+			number="{
+				parts:[{path:'Price'},'€'],
+				type: 'sap.ui.model.type.Currency',
+				formatOptions: {showMeasure: false}
+			}"
+			numberUnit="EUR">
+			
+			
+			<ObjectAttribute text=" from {Author}  " />
+			
+		</ObjectListItem>
+				 
+			
+		</items>
+			</List>
+						
+						
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
