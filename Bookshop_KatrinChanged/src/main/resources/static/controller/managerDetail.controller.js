@@ -10,7 +10,7 @@ sap.ui.define([
 	return Controller.extend("com.sap.bookstoreTA.controller.managerDetail", {
 		onInit: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
+            oRouter.getRoute("managerDetail").attachPatternMatched(this._onObjectMatched, this);
         },
         _onObjectMatched : function(oEvent){
             var sIsbn = oEvent.getParameter("arguments").isbn;
